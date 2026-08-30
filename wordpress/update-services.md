@@ -1,6 +1,6 @@
 # Update Services
 
-Update Services are tools you can use to let other people know you've updated your blog. WordPress automatically notifies popular Update Services that you've updated your blog by sending a [XML-RPC](http://www.xmlrpc.com/) [ping](https://wordpress.org/documentation/article/glossary/#pingback) each time you create or update a post. In turn, Update Services process the ping and updates their proprietary indices with _your_ update. 
+Update Services are tools you can use to let other people know you've updated your blog. WordPress automatically notifies popular Update Services that you've updated your blog by sending a [XML-RPC](https://xmlrpc.com/) [ping](https://wordpress.org/documentation/article/glossary/#pingback) each time you create or update a post. In turn, Update Services process the ping and updates their proprietary indices with _your_ update. 
 
 ## Common Usage
 
@@ -11,29 +11,35 @@ Most people use [Ping-o-Matic](https://pingomatic.com/) which, with just one "pi
 
 If you do not want the update services to be pinged, remove all the update service URIs listed under "Update Services" on the [Settings](https://wordpress.org/documentation/article/administration-screens/#settings-configuration-settings)->[Writing](https://wordpress.org/documentation/article/settings-writing-screen/) administration screen of your WordPress installation.
 
-![Screenshot of the Update Services screen.](https://wordpress.org/documentation/files/2018/10/update_service.png)
+![Screenshot of the Update Services screen.](https://wordpress.org/documentation/files/2025/06/update_service.png)
 
 Certain web hosts – particularly free ones – disable the PHP functions used to alert update services. If your web host prevents pings, you should stop WordPress from attempting to ping.
 
 ## XML-RPC Ping Services
 
 ```
-http://rpc.pingomatic.com
-http://rpc.twingly.com
-http://www.blogdigger.com/RPC2
+https://rpc.pingomatic.com/
+https://rpc.twingly.com/
 http://ping.blo.gs/
-http://ping.feedburner.com
-http://rpc.weblogs.com/RPC2
-http://www.pingmyblog.com
 ```
 
 ## Alternatives
 An alternative is [Feed Shark](https://feedshark.brainbliss.com/), which pings over 60 services for free.
 
 ## WordPress Multisite Network
-By default, editing the Ping Services for a WordPress Multisite network site is disabled. This can be re-enabled with a plugin such as the [Activate Update Services](https://wordpress.org/plugins/activate-update-services/) plugin.
+By default, editing the Ping Services field is disabled for individual sites in a WordPress Multisite network. To restore this option, you can add a small custom plugin or must-use plugin with the following code:
 
+```
+add_action( 'init', function() {
+    if ( is_multisite() ) {
+        // Allow the Update Services configuration screen to appear.
+        add_filter( 'enable_update_services_configuration', '__return_true', 11 );
 
-## Changelog
-
-- 2022-09-11: Original content from [Update Services](https://wordpress.org/documentation/article/update-services/).
+        // Whitelist the 'ping_sites' option so changes can be saved to the database.
+        add_filter( 'whitelist_options', function( $options ) {
+            $options['writing'][] = 'ping_sites';
+            return $options;
+        }, 11 );
+    }
+} );
+```

@@ -21,7 +21,10 @@ _Back up your database regularly, and always before an upgrade._
 
 **How often should you back up?**
 
-That depends on how often you blog, how often you want to do this, and how you would feel if your database were lost along with a few posts. It is your decision.
+That depends on how often you blog, how often you want to do this, and how you would feel if your database were lost along with a few posts. It is your decision. General suggestion when backups should be made:
+
+ - For smaller websites with fewer posts, backups should be made once a week.
+ - For high-activity websites with a lot of posts, backups should be made daily.
 
 **Can you use this method to back up other data?**
 
@@ -29,7 +32,7 @@ Yes. Backups are good all around.
 
 **How many backups should I keep?**
 
-The general rule of thumb is to keep at least three backups and keep them in three different places or forms, like CD/DVDs, different hard drives, a thumbdrive, web disk, your e-mail account, etc. This prevents problems if a single backup becomes corrupted or damaged.
+You should keep at least 3–5 recent WordPress backups to stay safe from data loss, with copies stored in different locations — for example, one on your hosting server, one on cloud storage (Google Drive, Dropbox, etc.), and one downloaded to your local computer. This way, even if one backup fails or is lost, you’ll always have a reliable version to restore your website.
 
 **Can backups be automated?**
 
@@ -41,7 +44,32 @@ Yes. See Backup Resources for more information.
 
 ### Backing Up Your WordPress Site
 
-There are two parts to backing up your WordPress site: **Database** and **Files**. You need to back up the entire site, and you need to back up your WordPress database. Below are instructions for backing up your WordPress database for various server programs. We will start with backing up the rest of your WordPress site.
+There are two parts to backing up your WordPress site: **Database** and **Files**. You need both to be able to fully restore a typical WordPress site.
+
+For step-by-step instructions, see:
+
+- [Backing Up Your WordPress Files](https://developer.wordpress.org/advanced-administration/security/backup-files/)
+- [Backing Up Your Database](https://developer.wordpress.org/advanced-administration/security/backup/database/)
+
+#### Database vs files (why both are needed)
+
+It is common to wonder whether “backing up the files” also backs up the database. In a typical WordPress setup, the answer is **no**:
+
+- **WordPress files** are the files in your WordPress directory on the web server (WordPress core, themes, plugins, uploads, `wp-config.php`, `.htaccess`, etc.).
+- **The WordPress database** is stored in a separate database system (usually MySQL/MariaDB). You usually **cannot** back it up by downloading your WordPress directory, because the database lives outside of it.
+
+When you “back up the database” you usually create an **export/dump file** (for example, a `.sql`, `.gz`, or `.bz2` file). That exported file *is* a file and you can store it alongside your file backups — but restoring still requires importing it back into MySQL/MariaDB.
+
+#### Recommended backup and restore order
+
+To keep backups consistent, it helps to treat the **files + database** as one “backup set” (for example, both created around the same time).
+
+- **Backup (typical order)**:
+  - **Back up the database first**, then back up the WordPress files.
+  - Optionally store the database export file inside the same backup folder/zip as the file backup, so they stay together.
+- **Restore (typical order)**:
+  - **Restore the WordPress files first**, then restore/import the database.
+  - If you changed database credentials during a migration, update `wp-config.php` to match.
 
 Your WordPress site consists of the following:
 
@@ -64,7 +92,7 @@ Most website hosts provide software to back up your site. Check with your host t
 
 **Create Sync With Your Site**
 
-[WinSCP](http://winscp.net/eng/index.php) and other programs allow you to sync with your website to keep a mirror copy of the content on your server and hard drive updated. It saves time and makes sure you have the latest files in both places.
+[WinSCP](https://winscp.net/eng/index.php) and other programs allow you to sync with your website to keep a mirror copy of the content on your server and hard drive updated. It saves time and makes sure you have the latest files in both places.
 
 **Copy Your Files to Your Desktop**
 
@@ -172,8 +200,8 @@ Various plugins exist to take automatic scheduled backups of your WordPress data
 
 ### Backup Resources
 
-* [FTP Backups](http://www.guyrutenberg.com/2010/02/28/improved-ftp-backup-for-wordpress/) – How to automate backing up to an FTP server
-* [Incremental Backups](http://www.guyrutenberg.com/2013/03/28/incremental-wordpress-backups-using-duply-duplicity/) – How to make encrypted incremental backups using duplicity
+* [FTP Backups](https://www.guyrutenberg.com/2010/02/28/improved-ftp-backup-for-wordpress/) – How to automate backing up to an FTP server
+* [Incremental Backups](https://www.guyrutenberg.com/2013/03/28/incremental-wordpress-backups-using-duply-duplicity/) – How to make encrypted incremental backups using duplicity
 * [Using phpMyAdmin with WordPress](https://developer.wordpress.org/advanced-administration/upgrade/phpmyadmin/)
 
 #### Backup Tools
@@ -188,7 +216,3 @@ Various plugins exist to take automatic scheduled backups of your WordPress data
 * [WordPress Backups](https://developer.wordpress.org/advanced-administration/security/backup/)
 * [Upgrading WordPress Extended](https://developer.wordpress.org/advanced-administration/upgrade/upgrading/)
 
-## Changelog
-
-- 2022-10-25: Original content from [Restoring Your Database From Backup](https://wordpress.org/documentation/article/restoring-your-database-from-backup/).
-- 2022-09-11: Original content from [WordPress Backups](https://wordpress.org/documentation/article/wordpress-backups/).

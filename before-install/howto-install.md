@@ -4,8 +4,8 @@ WordPress is well-known for its ease of installation. Under most circumstances, 
 
 ## Things to Know Before Installing WordPress
 
-Before you begin the install, there are a few things you need to have and do. Refer the article [Before You Install](https://developer.wordpress.org/advanced-administration/before-install/).
-If you need multiple WordPress instances, refer [Installing Multiple WordPress Instances.](https://developer.wordpress.org/advanced-administration/before-install/multiple-instances/)
+Before you begin the install, there are a few things you need to have and do. Refer the article [Before You Install](https://developer.wordpress.org/advanced-administration/before-install/). It's also good to verify that e-mail delivery is working properly on your host. Refer to [Mail](https://developer.wordpress.org/advanced-administration/server/mail/) for more information.
+If you need multiple WordPress instances, refer [Installing Multiple WordPress Instances.](https://developer.wordpress.org/advanced-administration/before-install/multiple-instances/).
 
 ## Basic Instructions
 
@@ -16,12 +16,12 @@ Here's the quick version of the instructions for those who are already comfortab
 3. (Optional) Find and rename `wp-config-sample.php` to `wp-config.php`, then edit the file [(see Editing wp-config.php)](https://developer.wordpress.org/advanced-administration/wordpress/wp-config/) and add your database information.
 **Note:** If you are not comfortable with renaming files, step 3 is optional and you can skip it as the install program will create the `wp-config.php` file for you.
 4. Upload the WordPress files to the desired location on your web server:
-    - If you want to integrate WordPress into the root of your domain (e.g. http://example.com/), move or upload all contents of the unzipped WordPress directory (excluding the WordPress directory itself) into the root directory of your web server.
-    - If you want to have your WordPress installation in its own subdirectory on your website (e.g. http://example.com/blog/), create the blog directory on your server and upload the contents of the unzipped WordPress package to the directory via FTP.
+    - If you want to integrate WordPress into the root of your domain (e.g. https://example.com/), move or upload all contents of the unzipped WordPress directory (excluding the WordPress directory itself) into the root directory of your web server.
+    - If you want to have your WordPress installation in its own subdirectory on your website (e.g. https://example.com/blog/), create the blog directory on your server and upload the contents of the unzipped WordPress package to the directory via FTP.
     - **Note:** If your FTP client has an option to convert file names to lower case, make sure it's disabled.
 5. Run the WordPress installation script by accessing the URL in a web browser. This should be the URL where you uploaded the WordPress files.
-- If you installed WordPress in the root directory, you should visit: http://example.com/
-- If you installed WordPress in its own subdirectory called blog, for example, you should visit: http://example.com/blog/
+- If you installed WordPress in the root directory, you should visit: https://example.com/
+- If you installed WordPress in its own subdirectory called blog, for example, you should visit: https://example.com/blog/
 That's it! WordPress should now be installed.
 
 ## Detailed instructions {#detailed-instructions}
@@ -39,7 +39,7 @@ Download and unzip the WordPress package from [wordpress.org/download/](https://
 
     The WordPress package will extract into a folder called wordpress in the same directory that you downloaded latest.tar.gz.
 
-### Step 2: Download and Extract {#detailed-step-2}
+### Step 2: Create a database for WordPress {#detailed-step-2}
 
 If you are using a [hosting provider](https://wordpress.org/documentation/article/glossary/#hosting-provider), you may already have a WordPress database set up for you, or there may be an automated setup solution to do so. Check your hosting provider's support pages or your control panel for clues about whether or not you'll need to create one manually.
 
@@ -107,8 +107,8 @@ Save the `wp-config.php` file.
 ### Step 4: Upload the files
 
 Now you will need to decide where on your domain you'd like your WordPress-powered site to appear:
-- In the root directory of your website. (For example, http://example.com/)
-- In a subdirectory of your website. (For example, http://example.com/blog/)
+- In the root directory of your website. (For example, https://example.com/)
+- In a subdirectory of your website. (For example, https://example.com/blog/)
 
 _**Note:** The location of your root web directory in the filesystem on your [web server](https://wordpress.org/documentation/article/glossary/#web-server) will vary across [hosting providers](https://wordpress.org/documentation/article/glossary/#hosting-provider) and operating systems. Check with your hosting provider or system administrator if you do not know where this is._
 
@@ -126,8 +126,8 @@ If your files are already on your web server, and you are using [shell](https://
 
 Point a web browser to start the installation script.
 
-- If you placed the WordPress files in the root directory, you should visit: http://example.com/wp-admin/install.php
-- If you placed the WordPress files in a subdirectory called blog, for example, you should visit: http://example.com/blog/wp-admin/install.php
+- If you placed the WordPress files in the root directory, you should visit: https://example.com/wp-admin/install.php
+- If you placed the WordPress files in a subdirectory called blog, for example, you should visit: https://example.com/blog/wp-admin/install.php
 
 #### Setup configuration file
 
@@ -159,7 +159,7 @@ You can also install WordPress on Ubuntu with [one click WordPress Hosting](http
 ### Installing WordPress at AWS
 
 - [Installatron WordPress](https://aws.amazon.com/marketplace/pp/prodview-duuvqpjnl65oe) Installatron WordPress is a pre-configured and ready-to-launch image that contains a WordPress website and Installatron's WordPress management tools.
-- [Architecting a Highly Scalable WordPress Site in AWS](http://www.slideshare.net/harishganesan/scaling-wordpress-in-aws-amazon-ec2) A guide for building a more expensive, highly scalable AWS implementation using Amazon's Relational Data Store (RDS) et al.
+- [Architecting a Highly Scalable WordPress Site in AWS](https://www.slideshare.net/harishganesan/scaling-wordpress-in-aws-amazon-ec2) A guide for building a more expensive, highly scalable AWS implementation using Amazon's Relational Data Store (RDS) et al.
 
 ### Installing WordPress at DigitalOcean
 
@@ -173,7 +173,7 @@ You can also install WordPress on Ubuntu with one click using this [StackScript]
 
 ### Installing WordPress at iPage Hosting
 
-- [This is a great step by step tutorial by IStartBlogging](http://istartblogging.com/#express-blog-install) on how to setup your blog the smart way with iPage Hosting.
+- [This is a great step by step tutorial by IStartBlogging](https://istartblogging.com/#express-blog-install) on how to setup your blog the smart way with iPage Hosting.
 
 In less than 5 minutes from now, you will have your blog ready on your domain. You will install WordPress on your own domain as an Automated Process with ONE Click WordPress Installation feature from iPage hosting.
 
@@ -222,9 +222,3 @@ Check to make sure that your configuration of your web-server is correct and tha
 **My image/MP3 uploads aren't working.**
 
 If you use the Rich Text Editor on a blog that's installed in a subdirectory, and drag a newly uploaded image into the editor field, the image may vanish a couple seconds later. This is due to a problem with TinyMCE (the rich text editor) not getting enough information during the drag operation to construct the path to the image or other file correctly. The solution is to NOT drag uploaded images into the editor. Instead, click and hold on the image and select **Send to Editor.**
-
-## Changelog
-
-- 2022-09-14: Added alt tags to all images.
-- 2022-09-14: cleared up a link refering to the [utf8mb4 article](https://make.wordpress.org/core/2015/04/02/the-utf8mb4-upgrade/)
-- 2022-09-14: Original content from [How to install WordPress](https://wordpress.org/documentation/article/how-to-install-wordpress/)

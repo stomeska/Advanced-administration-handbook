@@ -1,6 +1,6 @@
 # Creating Database for WordPress
 
-If you are installing WordPress on your own web server, follow the one of below instructions to create your WordPress database and user account.
+If you are installing WordPress on your own web server, follow one of the below instructions to create your WordPress database and user account.
 
 ## Using phpMyAdmin
 
@@ -24,7 +24,7 @@ phpMyAdmin Users Tab
 
 1. Click **Add user**.
 2. Choose a username for WordPress ('wordpress' is good) and enter it in the **User name** field. (Be sure **Use text field:** is selected from the dropdown.)
-3. Choose a secure password (ideally containing a combination of upper- and lower-case letters, numbers, and symbols), and enter it in the **Password** field. (Be sure **Use text field:** is selected from the dropdown.) Re-enter the password in the **Re-type**field.
+3. Choose a secure password (ideally containing a combination of upper- and lower-case letters, numbers, and symbols), and enter it in the **Password** field. (Be sure **Use text field:** is selected from the dropdown.) Re-enter the password in the **Re-type** field.
 4. Write down the username and password you chose.
 5. Leave all options under **Global privileges** at their defaults.
 6. Click **Go**.
@@ -48,12 +48,12 @@ Your MySQL connection id is 5340 to server version: 3.23.54
 Type 'help;' or '\\h' for help. Type '\\c' to clear the buffer.  
   
 mysql> CREATE DATABASE databasename;  
-Query OK, 1 row affected (0.00 sec)  
-  
-mysql> GRANT ALL PRIVILEGES ON databasename.* TO "wordpressusername"@"hostname"
-\-> IDENTIFIED BY "password";  
-Query OK, 0 rows affected (0.00 sec)  
-  
+Query OK, 1 row affected (0.00 sec)
+
+mysql> CREATE USER "wordpressusername"@"hostname" IDENTIFIED BY "password";
+mysql> GRANT ALL PRIVILEGES ON databasename.* TO "wordpressusername"@"hostname";
+Query OK, 0 rows affected (0.00 sec)
+
 mysql> FLUSH PRIVILEGES;  
 Query OK, 0 rows affected (0.01 sec)   
   
@@ -69,11 +69,11 @@ The example shows:
 * _hostname_ will usually be localhost. If you don't know what this value should be, check with your system administrator if you are not the admin for your WordPress host. If you are the system admin, consider using a non-root account to administer your database.
 * _password_ should be a difficult-to-guess password, ideally containing a combination of upper- and lower-case letters, numbers, and symbols. One good way of avoiding the use of a word found in a dictionary is to use the first letter of each word in a phrase that you find easy to remember.
 
-If you need to write these values somewhere, avoid writing them in the system that contains the things protected by them. You need to remember the value used for _databasename_, _wordpressusername_, _hostname_, and _password_. Of course, since they are already in (or will be shortly) your wp-config.php file, there is no need to put them somewhere else, too.
+If you need to write these values somewhere, avoid writing them in the system that contains the things protected by them. You need to remember the value used for _databasename_, _wordpressusername_, _hostname_, and _password_. Of course, since they are already (or will be shortly) in your wp-config.php file, there is no need to put them somewhere else, too.
 
 ## Using Plesk
 
-If your hosting provider supplies the [Plesk](http://www.plesk.com/) hosting control panel and you want to install WordPress manually, follow the instructions below to create a database:
+If your hosting provider supplies the [Plesk](https://www.plesk.com/) hosting control panel and you want to install WordPress manually, follow the instructions below to create a database:
 
 1. Log in to Plesk.
 2. Click **Databases** in the Custom Website area of your website on the Websites & Domains page:  
@@ -102,7 +102,3 @@ If you're a regular User of a single-site webhosting account, you can log in nor
 Reseller accounts Admin accounts may need to click **User Level**. They must first log in as Reseller if the relevant domain is a Reseller's primary domain… or log in as a User if the domain is not a Reseller's primary domain. If it's the Reseller's primary domain, then when logged in as Reseller, simply click **User Level**. However if the relevant domain is not the Reseller's primary domain, then you must log in as a User. Then click **MySQL Management**. (If not readily visible, perhaps you need to return to the Reseller or Admin level, and modify the “Manage user package” or “Manage Reseller package” to enable MySQL.)
 
 In MySQL Management, click on the small words: **Create new database**. Here you are asked to submit two suffixes for the database and its username. For maximum security, use two different sets of 4-6 random characters. Then the password field has a Random button that generates an 8-character password. You may also add more characters to the password for maximum security. Click **Create**. The next screen will summarize the database, username, password and hostname. Be sure to copy and paste these into a text file for future reference.
-
-## Changelog
-
-- 2022-09-11: Original content from [Creating Database for WordPress](https://wordpress.org/documentation/article/creating-database-for-wordpress/).

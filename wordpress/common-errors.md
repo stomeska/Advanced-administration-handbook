@@ -4,7 +4,7 @@ If you are encountering a WordPress error message or white screen, don't panic. 
 
 This page lists the most common WordPress errors experienced by WordPress users, and provides a starting point for fixing them. At [WordPress Support](https://wordpress.org/documentation/), you will also find links to more detailed pages or forums where a volunteer will be there to help.
 
-## The White Screen of Death {}#the-white-screen-of-death}
+## The White Screen of Death {#the-white-screen-of-death}
 
 Both PHP errors and database errors can manifest as a white screen, a blank screen with no information, commonly known in the WordPress community as the _WordPress White Screen of Death_ (WSOD).
 
@@ -58,7 +58,7 @@ Contact your hosting provider to see if either of these issues is causing your p
 
 If you have checked `wp-config.php` for errors, and confirmed with your host for hosting issues, it is possible that your site has been hacked.
 
-Scan your site with [Sucuri SiteCheck](http://sitecheck.sucuri.net/) to ensure that it hasn't been compromised. If it has you should check out [My Site was Hacked](https://wordpress.org/documentation/article/faq-my-site-was-hacked/).
+Scan your site with [Sucuri SiteCheck](https://sitecheck.sucuri.net/) to ensure that it hasn't been compromised. If it has you should check out [My Site was Hacked](https://wordpress.org/documentation/article/faq-my-site-was-hacked/).
 
 ## Failed Auto-Upgrade {#failed-auto-upgrade}
 
@@ -129,6 +129,16 @@ You may experience problems with 404 errors and [custom post types](https://word
 
 1. Make sure that none of your Custom Post Types and single pages have the same name. If they do, rename the single page, including the [slug](https://wordpress.org/documentation/article/glossary/#post-slug).
 2. Log in to your WordPress Administration Screens, navigate to **Settings > Permalinks**. Select the default permalinks. Save. Then reselect your preferred permalinks. This will flush the rewrite rules and should solve your problem.
+
+## Critical Error Message {#critical-error-message}
+
+If you come across the message "There has been a critical error on this website. Please check your site admin email inbox for instructions.", this indicates that something in your site has caused a critical error that prevents WordPress from running as expected.
+
+First, check your email to see if WordPress has sent you any details about the error. Next, enable debug mode in your [wp-config.php](https://developer.wordpress.org/advanced-administration/debug/debug-wordpress/#example-wp-config-php-for-debugging) file.
+
+After enabling this, review the error logs located in wp-content/debug.log to find out what specifically went wrong.
+
+Some of the most common causes you might uncover include conflicts between plugins, compatibility issues with your theme, running an incompatible PHP version, hitting the memory limit, or having corrupted WordPress files.
 
 ## Specific Error Messages {#specific-error-messages}
 
@@ -272,12 +282,9 @@ If you have not used phpMyAdmin before, or are uncomfortable doing so, contact y
 
 An unknown column error can be caused by a missing column in the database. If you have just upgraded WordPress then try manually upgrading again. To update your WordPress site manually, see the [Update article](https://wordpress.org/documentation/article/updating-wordpress/#manual-update).
 
-If you are running a database query when you encounter the error then you may by using incorrect quotation marks for the identifier quote character. This [question on Stack Overflow provides more details](https://stackoverflow.com/questions/1346209/unknown-column-in-field-list-error-on-mysql-update-query). Also see the [MySQL documentation](http://dev.mysql.com/doc/refman/en/identifiers.html).
+If you are running a database query when you encounter the error then you may by using incorrect quotation marks for the identifier quote character. This [question on Stack Overflow provides more details](https://stackoverflow.com/questions/1346209/unknown-column-in-field-list-error-on-mysql-update-query). Also see the [MySQL documentation](https://dev.mysql.com/doc/refman/8.2/en/identifiers.html).
 
 ## Resources {#resources}
 
-* [MySQL Error Codes and Messages](http://dev.mysql.com/doc/refman/en/error-messages-server.html)
+* [MySQL Error Codes and Messages](https://dev.mysql.com/doc/refman/en/error-messages-server.html)
 
-## Changelog
-
-- 2023-01-20: Copy content from [Common WordPress Errors](https://wordpress.org/documentation/article/common-wordpress-errors/)

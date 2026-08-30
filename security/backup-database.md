@@ -4,7 +4,9 @@
 
 [Restoring your database from backup](https://developer.wordpress.org/advanced-administration/security/backup/) is then possible if something goes wrong. 
 
-**NOTE:** Below steps backup core WordPress database that include all your posts, pages and comments, but DO NOT backup the files and folders such as images, theme files on the server. For whole WordPress site backup, refer [WordPress Backups](https://developer.wordpress.org/advanced-administration/security/backup/).
+**NOTE:** The steps below back up the WordPress database (posts, pages, comments, settings, etc.) but they do **not** back up your WordPress files (themes, plugins, uploads, `wp-config.php`, etc.). For a full-site backup, see [WordPress Backups](https://developer.wordpress.org/advanced-administration/security/backup/) and [Backing Up Your WordPress Files](https://developer.wordpress.org/advanced-administration/security/backup-files/).
+
+When you back up a database, you usually create an export file (for example, a `.sql`, `.gz`, or `.bz2`). That export file can be stored with your file backups so the database and files stay together as one “backup set”, but restoring still requires importing it into MySQL/MariaDB.
 
 ### Backup using cPanel X {#backup-using-cpanel-x}
 
@@ -177,15 +179,15 @@ In addition to MySQL Workbench, there are many GUI tools that let you backup (ex
 
 | Name | OS (Paid edition) | OS (Free edition) | |
 |---|---|---|
-| [MySQL Workbench](http://www.mysql.com/products/workbench/) | Windows/Mac/Linux | Windows/Mac/Linux | See [above](https://developer.wordpress.org/advanced-administration/security/backup/database/#Using_MySQL_Workbench) |
-| [EMS SQL Management Studio for MySQL](http://sqlmanager.net/en/products/studio/mysql) | Windows | | |
-| [Aqua Data Studio](http://www.aquafold.com/) | Windows/Mac/Linux | Windows/Mac/Linux (14 days trial) | Available in 9 languages |
+| [MySQL Workbench](https://www.mysql.com/products/workbench/) | Windows/Mac/Linux | Windows/Mac/Linux | See [above](https://developer.wordpress.org/advanced-administration/security/backup/database/#Using_MySQL_Workbench) |
+| [EMS SQL Management Studio for MySQL](https://www.sqlmanager.net/products/mysql/studio) | Windows | | |
+| [Aqua Data Studio](https://www.aquafold.com/) | Windows/Mac/Linux | Windows/Mac/Linux (14 days trial) | Available in 9 languages |
 | [Navicat for MySQL](https://www.navicat.com/en/products/navicat-for-mysql) | Windows/Mac/Linux | Windows/Mac/Linux (14 days trial) | Available in 8 languages |
-| [SQLyog](http://www.webyog.com/en/) | Windows | | |
+| [SQLyog](https://webyog.com/en/) | Windows | | |
 | [Toad for MySQL](https://www.toadworld.com/) | | Windows | |
-| [HeidiSQL](http://www.heidisql.com/) | | Windows | |
-| [Sequel Pro](http://sequelpro.com/) | Mac | CocoaMySQL successor | |
-| [Querious](http://www.araelium.com/querious/) | | Mac | |
+| [HeidiSQL](https://www.heidisql.com/) | | Windows | |
+| [Sequel Pro](https://sequelpro.com/) | Mac | CocoaMySQL successor | |
+| [Querious](https://www.araelium.com/querious/) | | Mac | |
 
 ### Using WordPress Database Backup Plugin {#using-wordpress-database-backup-plugin}
 
@@ -280,6 +282,3 @@ Enter password: (enter your mysql password)
 user@linux:~/files/blog>
 ```
 
-## Changelog
-
-- 2022-10-25: Original content from [Backing Up Your Database](https://developer.wordpress.org/advanced-administration/security/backup/database/).

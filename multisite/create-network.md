@@ -28,7 +28,7 @@ If you plan to [run WordPress out of its own directory](https://developer.wordpr
 
 To enable the Network Setup menu item, you must first define multisite in the [wp-config.php](https://developer.wordpress.org/advanced-administration/wordpress/wp-config/) file.
 
-Open up `wp-config.php` and add this line **above** where it says `/* That's all, stop editing! Happy blogging. */`. If it doesn't say that anywhere, then add the line somewhere above the first line that begins with `require` or `include`:
+Open up `wp-config.php` and add this line **above** where it says `/* That's all, stop editing! Happy publishing. */`. If it doesn't say that anywhere, then add the line somewhere above the first line that begins with `require` or `include`:
 
 ```
 /* Multisite */
@@ -61,7 +61,7 @@ Once more: See [Before You Create A Network](https://developer.wordpress.org/adv
 
 **Network Details**
 
-These are filled in automatically, but you can make changes. Server Address The domain of the URL you are using to access your WordPress installation. Network Title The title of your network as a whole. Admin E-mail Address Your email address as super admin of the network as a whole.
+These are filled in automatically, but you can make changes. `Server Address`: the domain of the URL you are using to access your WordPress installation. `Network Title`: the title of your network as a whole. `Network Admin E-mail`: your email address as super admin of the network as a whole.
 
 Double-check the details and press the **Install** button.
 
@@ -109,8 +109,5 @@ For help troubleshooting:
 
 * [Hosting WordPress](https://wordpress.org/documentation/article/hosting-wordpress/)
 * [Installing Multiple Blogs](https://developer.wordpress.org/advanced-administration/before-install/multiple-instances/)
-* [How to adapt my plugin to Multisite?](http://stackoverflow.com/questions/13960514/how-to-adapt-my-plugin-to-multisite/)
+* [How to adapt my plugin to Multisite?](https://stackoverflow.com/questions/13960514/how-to-adapt-my-plugin-to-multisite/)
 
-## Changelog
-
-- 2022-10-21: Original content from [Create A Network](https://wordpress.org/documentation/article/create-a-network/).
